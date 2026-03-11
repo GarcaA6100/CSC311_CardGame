@@ -1,0 +1,62 @@
+.root-vbox {
+    -fx-background-color: #ffffff;
+    -fx-padding: 30 40 30 40;
+}
+.title-label {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1a1a2e;
+    -fx-font-family: "Georgia";
+}
+.subtitle-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #4a5568;
+}
+.input-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #1a1a2e;
+}
+.expression-field {
+    -fx-font-size: 15px;
+    -fx-background-color: #f7f7f7;
+    -fx-text-fill: #1a1a2e;
+    -fx-prompt-text-fill: #a0aec0;
+    -fx-border-color: #cbd5e0;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 6 10 6 10;
+}
+.expression-field:focused {
+    -fx-border-color: #2563eb;
+}
+.btn-verify {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+}
+.btn-verify:hover { -fx-background-color: #1d4ed8; }
+.btn-find {
+    -fx-background-color: #059669;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+}
+.btn-find:hover { -fx-background-color: #047857; }
+.btn-refresh {
+    -fx-background-color: #d97706;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+}
+.btn-refresh:hover { -fx-background-color: #b45309; }
+.status-label { -fx-font-size: 15px; -fx-font-weight: bold; }

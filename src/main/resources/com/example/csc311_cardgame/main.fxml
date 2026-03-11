@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.csc311_cardgame.MainController"
+      styleClass="root-vbox"
+      spacing="20"
+      alignment="CENTER">
+
+    <Label text="Card 24 Game" styleClass="title-label"/>
+    <Label text="Use all four card values with +  −  ×  ÷ to make 24"
+           styleClass="subtitle-label"/>
+
+    <HBox spacing="18" alignment="CENTER">
+        <ImageView fx:id="card1Image" fitWidth="110" fitHeight="150" preserveRatio="true"/>
+        <ImageView fx:id="card2Image" fitWidth="110" fitHeight="150" preserveRatio="true"/>
+        <ImageView fx:id="card3Image" fitWidth="110" fitHeight="150" preserveRatio="true"/>
+        <ImageView fx:id="card4Image" fitWidth="110" fitHeight="150" preserveRatio="true"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Enter an expression:" styleClass="input-label"/>
+        <TextField fx:id="expressionField" promptText="e.g. (6+6)*12/6"
+                   styleClass="expression-field" prefWidth="200"/>
+        <Button fx:id="verifyButton" text="Verify"
+                styleClass="btn-verify" onAction="#handleVerify"/>
+    </HBox>
+
+    <Label fx:id="statusLabel" styleClass="status-label" text=""/>
+
+    <HBox spacing="14" alignment="CENTER">
+        <Button fx:id="findSolutionButton" text="Find a Solution"
+                styleClass="btn-find" onAction="#handleFindSolution"/>
+        <Button fx:id="refreshButton" text="Refresh"
+                styleClass="btn-refresh" onAction="#handleRefresh"/>
+    </HBox>
+
+</VBox>
