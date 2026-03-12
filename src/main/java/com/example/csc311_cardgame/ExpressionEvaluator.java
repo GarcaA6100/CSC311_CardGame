@@ -8,6 +8,7 @@ public class ExpressionEvaluator {
     private String expression;
     private int pos;
 
+    // Main method to evaluate an expression string entered by the player
     public double evaluate(String expr) {
         this.expression = expr.replaceAll("\\s+", "");
         this.pos = 0;
@@ -18,6 +19,7 @@ public class ExpressionEvaluator {
         return result;
     }
 
+    // Handles + and - (these are calculated last)
     private double parseExpression() {
         double left = parseTerm();
         while (pos < expression.length()) {
@@ -31,6 +33,7 @@ public class ExpressionEvaluator {
         return left;
     }
 
+    // Handles * and / (these are calculated before + and -)
     private double parseTerm() {
         double left = parseFactor();
         while (pos < expression.length()) {
@@ -49,6 +52,7 @@ public class ExpressionEvaluator {
         return left;
     }
 
+    // Handles numbers, parentheses, and negative numbers
     private double parseFactor() {
         if (pos >= expression.length())
             throw new IllegalArgumentException("Unexpected end of expression.");
@@ -57,6 +61,7 @@ public class ExpressionEvaluator {
 
         if (ch == '-') { pos++; return -parseFactor(); }
 
+        // Calculate whatever is inside the parentheses first
         if (ch == '(') {
             pos++;
             double result = parseExpression();
@@ -75,6 +80,7 @@ public class ExpressionEvaluator {
         throw new IllegalArgumentException("Unexpected character: " + ch);
     }
 
+    // Pulls out all the numbers from an expression, used to check the player used the right card values
     public static List<Integer> extractNumbers(String expr) {
         List<Integer> numbers = new ArrayList<>();
         String clean = expr.replaceAll("\\s+", "");

@@ -9,6 +9,7 @@ public class Deck {
 
     private final List<Card> cards = new ArrayList<>();
 
+    // Build a full 52-card deck and shuffle it
     public Deck() {
         String[] suits = {Card.HEARTS, Card.DIAMONDS, Card.CLUBS, Card.SPADES};
         for (String suit : suits) {
@@ -19,6 +20,7 @@ public class Deck {
         Collections.shuffle(cards);
     }
 
+    // Deal 4 cards from the deck. Rebuilds the deck if not enough cards are left
     public List<Card> dealFour() {
         if (cards.size() < 4) {
             cards.clear();

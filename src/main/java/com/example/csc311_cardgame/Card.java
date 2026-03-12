@@ -2,6 +2,7 @@ package com.example.csc311_cardgame;
 
 public class Card {
 
+    // The four suits in a deck
     public static final String HEARTS   = "Hearts";
     public static final String DIAMONDS = "Diamonds";
     public static final String CLUBS    = "Clubs";
@@ -18,6 +19,7 @@ public class Card {
     public String getSuit() { return suit; }
     public int getValue() { return value; }
 
+    // Returns the letter or number shown on the card (A, 2-10, J, Q, K)
     public String getRankLabel() {
         return switch (value) {
             case 1  -> "A";
@@ -28,14 +30,13 @@ public class Card {
         };
     }
 
+    /** Returns true if the suit is Hearts or Diamonds (red cards) */
     public boolean isRed() {
         return suit.equals(HEARTS) || suit.equals(DIAMONDS);
     }
 
-    /**
-     * Returns the image filename for this card.
-     * e.g. "ace_of_hearts.png", "6_of_diamonds.png", "king_of_spades.png"
-     */
+
+    // Returns the image file name for this card, e.g. "ace_of_hearts.png"
     public String getImageFilename() {
         String rank = switch (value) {
             case 1  -> "ace";

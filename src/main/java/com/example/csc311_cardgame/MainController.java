@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    // These connect to the UI elements defined in main.fxml
     @FXML private ImageView card1Image, card2Image, card3Image, card4Image;
     @FXML private TextField expressionField;
     @FXML private Button verifyButton, refreshButton, findSolutionButton;
@@ -23,9 +24,11 @@ public class MainController implements Initializable {
     private final ExpressionEvaluator evaluator = new ExpressionEvaluator();
     private final SolutionFinder solutionFinder = new SolutionFinder();
 
+    // Deal the first hand when the app opens
     @Override
     public void initialize(URL url, ResourceBundle rb) { dealNewCards(); }
 
+    // Clear the input and deal new cards when Refresh is clicked
     @FXML
     private void handleRefresh() {
         expressionField.clear();
@@ -33,6 +36,7 @@ public class MainController implements Initializable {
         dealNewCards();
     }
 
+    // Check if the player's expression uses the right card values and equals 24
     @FXML
     private void handleVerify() {
         String expr = expressionField.getText().trim();
@@ -41,6 +45,7 @@ public class MainController implements Initializable {
             return;
         }
 
+        // Make sure the numbers in the expression match the four card values
         List<Integer> usedNumbers = ExpressionEvaluator.extractNumbers(expr);
         List<Integer> cardValues = new ArrayList<>();
         for (Card c : currentCards) cardValues.add(c.getValue());
@@ -56,6 +61,7 @@ public class MainController implements Initializable {
             return;
         }
 
+        // Evaluate the expression and check if it equals 24
         try {
             double result = evaluator.evaluate(expr);
             if (Math.abs(result - 24.0) < 1e-9) {
@@ -75,6 +81,7 @@ public class MainController implements Initializable {
         }
     }
 
+    // Find a solution automatically and show it in the text field
     @FXML
     private void handleFindSolution() {
         String solution = solutionFinder.findSolution(currentCards);
@@ -88,6 +95,7 @@ public class MainController implements Initializable {
         }
     }
 
+    // Deal 4 new cards and update the images shown on screen
     private void dealNewCards() {
         currentCards = deck.dealFour();
         card1Image.setImage(loadCardImage(currentCards.get(0)));
@@ -97,6 +105,7 @@ public class MainController implements Initializable {
         statusLabel.setText("");
     }
 
+    // Load the card image from the resources/png folder
     private Image loadCardImage(Card card) {
         String path = "/com/example/csc311_cardgame/png/" + card.getImageFilename();
         URL resource = getClass().getResource(path);
@@ -107,6 +116,7 @@ public class MainController implements Initializable {
         return new Image(resource.toExternalForm());
     }
 
+    // Show a pop-up dialog with a message for the player
     private void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
